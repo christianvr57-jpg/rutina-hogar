@@ -1,0 +1,174 @@
+{
+  "actualizado": "2026-10-16",
+  "estado": "auditoria",
+
+  "perfil": {
+    "datos": [
+      ["Atleta", "Hombre, 32 años · 184 cm · ~81 kg"],
+      ["Procedencia", "Natación y triatlón durante años: base aeróbica histórica"],
+      ["Marcas declaradas", "5K ≈ 20:00 · 10K ≈ 41:00 (fecha y contexto por confirmar)"],
+      ["Mejor 10K en Strava", "40:00 (fecha por confirmar)"],
+      ["VO2max del reloj", "≈ 51,6 (estimación, no medición)"],
+      ["FC máx. observada", "≈ 188 ppm"],
+      ["FC umbral configurada", "≈ 168 ppm (pendiente de validar)"],
+      ["Otros deportes", "Pádel L y J ~90 min intenso · gimnasio 2-3/sem · natación ocasional"],
+      ["Dispositivo", "Suunto Race S · análisis en Intervals.icu"],
+      ["Antecedentes", "Gemelos y tendón de Aquiles · cervical y trapecios · rodilla izquierda tras ciertas cargas"]
+    ],
+    "zonas": { "distancia": 10000, "marca": "41:00", "fcUmbral": 168, "fcMax": 188 }
+  },
+
+  "diagnostico": {
+    "fuente": "Strava (consultado el 16 oct 2026). Si el Suunto no sincroniza todo con Strava, estos datos están incompletos.",
+    "hallazgos": [
+      { "nivel": "dato", "titulo": "Volumen de abril a junio", "texto": "Entre 2 y 3 salidas por semana. Semanas más altas: 18,5 km (27 abr), 18,8 km (18 may) y 21,6 km (8 jun). Tirada más larga: 12,4 km (25 may). Hubo semanas sueltas sin correr." },
+      { "nivel": "dato", "titulo": "Tempo del 17 de junio", "texto": "4,62 km en 19:59 (4:19/km) con FC media 166 y máxima 174. Es coherente con un umbral cercano a 4:15-4:20/km y una FC de umbral de unos 166-170 ppm en junio." },
+      { "nivel": "dato", "titulo": "Rodaje del 15 de junio", "texto": "7,9 km a 5:43/km con FC media 137. Buena respuesta cardíaca a ritmo fácil." },
+      { "nivel": "dato", "titulo": "7×1000 del 20 de mayo", "texto": "Series a 4:41-4:47/km con FC media por serie de 148 a 155. Para tu nivel fue un estímulo aeróbico, por debajo del umbral." },
+      { "nivel": "duda", "titulo": "Julio", "texto": "Salidas de 3,4 a 6,1 km, casi todas a 7:15-8:20/km. ¿Fue por ir acompañado, por molestias o por volver de un parón?" },
+      { "nivel": "dato", "titulo": "Última carrera real: 3 de agosto", "texto": "5 km progresivos de 4:47 a 4:42/km con FC de 148 a 157." },
+      { "nivel": "alerta", "titulo": "Desde agosto casi no hay running", "texto": "La única actividad de carrera posterior (17 sep) va a ~9:30/km con FC 110 y cadencia ~120 pasos/min: parece una caminata. En las últimas 4 semanas solo aparecen pádel (23, 25 y 30 sep) y gimnasio (7 oct)." },
+      { "nivel": "duda", "titulo": "Zonas configuradas en Strava", "texto": "Strava tiene zonas manuales con Z4 158-171 y Z5 desde 172, que no encajan con un umbral de 168. Hay que unificar zonas en Suunto, Intervals.icu y Strava." }
+    ],
+    "conclusion": "Si Strava está completo, tu base de running actual es baja e intermitente. En ese caso, ni 41:00 ni 40:00 reflejarían tu forma de hoy, y el primer bloque sería de reconstrucción progresiva, no de umbral ni de VO2max. Tu base aeróbica de natación y triatlón acelera la recuperación cardiovascular, pero tendones y gemelos se adaptan más despacio. Lo confirmamos con la auditoría antes de decidir nada."
+  },
+
+  "hojaDeRuta": [
+    { "paso": "Auditoría inicial", "texto": "Respondes los bloques por orden de prioridad (pestaña Auditoría).", "estado": "actual" },
+    { "paso": "Diagnóstico de rendimiento", "texto": "Separo marcas, estimaciones del reloj y capacidad real. Valido FC máxima y FC de umbral.", "estado": "pendiente" },
+    { "paso": "Prioridades de mejora", "texto": "Qué capacidad te limita hoy: volumen tolerable, umbral, VO2max o economía.", "estado": "pendiente" },
+    { "paso": "Objetivos de 10K", "texto": "Uno realista y otro ambicioso, con objetivos intermedios revisables.", "estado": "pendiente" },
+    { "paso": "Primer bloque", "texto": "3-4 semanas organizadas alrededor del pádel y del gimnasio, con criterios para ajustar.", "estado": "pendiente" },
+    { "paso": "Seguimiento", "texto": "Revisión semanal con tus datos reales y un test de control al final de cada bloque.", "estado": "pendiente" }
+  ],
+
+  "fases": [
+    { "id": "base", "nombre": "Base aeróbica", "objetivo": "Volver a tolerar volumen con bajo coste: frecuencia de salidas, rodajes fáciles, rectas y fuerza.", "duracion": "Por definir" },
+    { "id": "umbral", "nombre": "Umbral de lactato", "objetivo": "Correr más rápido sin acumular lactato: tempos e intervalos largos a ritmo de umbral.", "duracion": "Por definir" },
+    { "id": "vo2", "nombre": "VO2max y velocidad aeróbica", "objetivo": "Subir el techo aeróbico con intervalos de 3-5 minutos.", "duracion": "Por definir" },
+    { "id": "especifico", "nombre": "Ritmo específico de 10K", "objetivo": "Acostumbrarte al ritmo objetivo con repeticiones de 1-3 km.", "duracion": "Por definir" },
+    { "id": "afinamiento", "nombre": "Afinamiento", "objetivo": "Bajar volumen manteniendo intensidad para llegar fresco a la carrera.", "duracion": "7-10 días antes de competir" }
+  ],
+
+  "auditoria": [
+    {
+      "id": "b1",
+      "titulo": "Bloque 1 · Imprescindible",
+      "porque": "Sin esto no puedo decidir ni el volumen de partida ni si es seguro meter intensidad.",
+      "preguntas": [
+        { "id": "molestias", "texto": "¿Cómo están hoy el gemelo y el tendón de Aquiles, la rodilla izquierda y el cuello y los trapecios?", "ayuda": "Para cada zona: dolor de 0 a 10 y cuándo aparece (al levantarte, al empezar a correr, durante, después o al día siguiente). En la rodilla, di qué cargas la provocan: cuestas, bajadas, series, pádel o sentadillas." },
+        { "id": "volumen", "texto": "¿Qué has corrido en las últimas 8 semanas?", "ayuda": "Strava solo muestra una caminata (17 sep) desde el 3 de agosto. ¿Has parado o el Suunto no sincroniza con Strava? Si has corrido: km por semana, número de salidas y salida más larga." },
+        { "id": "julio", "texto": "¿Por qué las salidas de julio fueron tan suaves (7:15-8:20/km) y luego paraste?", "ayuda": "Acompañado, molestias, vacaciones, falta de tiempo…" },
+        { "id": "carrera", "texto": "¿Tienes una carrera de 10K a la vista?", "ayuda": "Fecha, nombre y perfil del circuito. Strava indica que entrenas para un evento: ¿cuál es? Si no hay ninguna, ¿te planteas alguna?" },
+        { "id": "marcas", "texto": "¿Cuándo y dónde hiciste 20:00 en 5K y 41:00 en 10K? ¿Y el 40:00 que Strava guarda como mejor 10K?", "ayuda": "Carrera oficial o entreno, fecha, circuito llano o no, medición con GPS o chip." },
+        { "id": "disponibilidad", "texto": "¿Qué días y franjas tienes de verdad para correr?", "ayuda": "Incluye si el pádel sigue siendo lunes y jueves: en Strava aparece también en miércoles y viernes. ¿Puedes hacer dobles sesiones algún día y en qué franja?" }
+      ]
+    },
+    {
+      "id": "b2",
+      "titulo": "Bloque 2 · Importante",
+      "porque": "Sirve para fijar zonas fiables y decidir cuánta intensidad y fuerza caben en la semana.",
+      "preguntas": [
+        { "id": "fc", "texto": "¿De dónde salen la FC máxima de 188 y el umbral de 168?", "ayuda": "Carrera, test, pádel o cálculo automático del Suunto, y cuándo. ¿Usas banda de pecho o el sensor de muñeca?" },
+        { "id": "rodaje", "texto": "Si salieras hoy a rodar 40 minutos cómodo, ¿a qué ritmo y FC irías?", "ayuda": "Si no lo sabes, no pasa nada: lo veremos en las primeras salidas." },
+        { "id": "recuperacion", "texto": "¿Cómo son tu sueño, tu estrés y tu energía?", "ayuda": "Horas por noche, si se interrumpe y nivel de estrés de 1 a 5 (trabajo y casa). ¿Mide el Suunto la variabilidad cardíaca (HRV) o la FC en reposo por la noche?" },
+        { "id": "gimnasio", "texto": "¿Qué haces en el gimnasio y qué días?", "ayuda": "Ejercicios, series, cargas aproximadas y qué te molesta (gemelo, rodilla o cuello)." },
+        { "id": "terreno", "texto": "¿Por dónde corres normalmente?", "ayuda": "Asfalto, tierra o pista (en Carballo hay pista: ¿puedes usarla?), y si hay cuestas cerca." }
+      ]
+    },
+    {
+      "id": "b3",
+      "titulo": "Bloque 3 · Complementario",
+      "porque": "Afina detalles. Puede esperar a la primera revisión.",
+      "preguntas": [
+        { "id": "padel", "texto": "¿El pádel es de competición o de ocio? ¿Puede cambiar de día si hace falta?", "ayuda": "En Strava, el pádel del 23 sep marcó un esfuerzo relativo de 86, mayor que tu tempo de junio (45)." },
+        { "id": "natacion", "texto": "¿Quieres mantener la natación? ¿Con qué frecuencia?", "ayuda": "Puede servir como sesión aeróbica de bajo impacto si el tendón protesta." },
+        { "id": "zapatillas", "texto": "¿Qué zapatillas usas y cuántos km llevan?", "ayuda": "¿Tienes alguna para series o competición?" },
+        { "id": "potencia", "texto": "¿La potencia de tus carreras viene del reloj o de un sensor de pie (Stryd o similar)?", "ayuda": "Si es del reloj, la usaremos solo para compararte contigo mismo en llano." },
+        { "id": "nutricion", "texto": "¿Cómo comes en un día normal y alrededor de los entrenos?", "ayuda": "¿Quieres cambiar de peso? ¿Tomas cafeína o algún suplemento?" },
+        { "id": "intervals", "texto": "¿Puedes compartir datos de Intervals.icu?", "ayuda": "Los de bienestar (sueño, HRV, FC en reposo) y la curva de ritmos. Las actividades ya las leo de Strava." }
+      ]
+    }
+  ],
+
+  "plan": {
+    "semanas": []
+  },
+
+  "guia": {
+    "semaforo": [
+      { "nivel": "verde", "titulo": "Seguir con el plan", "puntos": ["Molestia de 0 a 2 sobre 10 que desaparece al calentar.", "Al día siguiente no estás peor por la mañana.", "La zancada no cambia."] },
+      { "nivel": "ambar", "titulo": "Ajustar hoy", "puntos": ["Dolor de 3 a 5 durante la sesión o más rigidez al levantarte al día siguiente.", "Quita cuestas, saltos y series; acorta o cambia la sesión por bici o natación suave.", "Si se repite 3 días seguidos o va a más, revisamos el plan."] },
+      { "nivel": "rojo", "titulo": "Parar y consultar a un profesional", "puntos": ["Dolor de más de 5 sobre 10, que aumenta mientras corres o te hace cojear.", "Dolor muy localizado en un hueso, o dolor en reposo o por la noche.", "Chasquido o sensación de golpe en el gemelo o el Aquiles.", "Rodilla hinchada, que se bloquea o que falla.", "Hormigueo o pérdida de fuerza en los brazos, o mareos con el dolor de cuello."] }
+    ],
+    "semaforoNota": "Se basa en el modelo de monitorización del dolor usado en la rehabilitación de tendinopatías (Silbernagel y colaboradores): se tolera algo de molestia si se calma en 24 horas. Es una guía, no un diagnóstico.",
+
+    "guiarse": [
+      { "sesion": "Rodajes y tiradas largas", "como": "FC como techo (Z2) y RPE 3-4. El ritmo es una consecuencia: si hace calor o viento, ve más lento." },
+      { "sesion": "Umbral y tempo", "como": "Por ritmo, con la FC de control: en repeticiones largas debería acabar en Z4 sin pasar a Z5. Si la FC sube más de lo normal a ese ritmo, puede ser fatiga, calor o deshidratación." },
+      { "sesion": "VO2max y ritmo 10K", "como": "Por ritmo y sensaciones. La FC tarda 1-2 minutos en subir y engaña en repeticiones cortas." },
+      { "sesion": "Cuestas, viento o terreno irregular", "como": "Por RPE. El ritmo deja de ser comparable." },
+      { "sesion": "Potencia del Suunto", "como": "Es una estimación de muñeca: sirve para compararte contigo mismo en llano, no para fijar zonas absolutas." }
+    ],
+
+    "sesiones": [
+      { "id": "rodaje", "titulo": "Rodaje fácil", "tipo": "rodaje", "calentamiento": "Empieza más lento de lo que te pide el cuerpo los primeros 10 minutos.", "principal": "30-60 minutos a {E}.", "recuperaciones": "—", "vuelta": "Termina andando 2-3 minutos.", "intensidad": "Z1-Z2 · RPE 3-4 · puedes hablar en frases completas", "objetivo": "Más mitocondrias y capilares y un corazón más eficiente con poco coste de recuperación. Es la base de todo lo demás.", "nota": "Si vuelves de un parón, esta será casi la única sesión de las primeras semanas." },
+      { "id": "rectas", "titulo": "Rectas (strides)", "tipo": "rodaje", "calentamiento": "Al final de un rodaje fácil.", "principal": "6-8 × 20 segundos acelerando hasta {R}, relajado y sin esprintar.", "recuperaciones": "60-90 segundos andando o trotando.", "vuelta": "5 minutos de trote.", "intensidad": "Rápido pero suelto · RPE 7 en cada recta, pero no cansan", "objetivo": "Economía de carrera y coordinación neuromuscular sin carga metabólica relevante.", "nota": "En llano o con una ligera subida. Evítalas si el Aquiles está en ámbar." },
+      { "id": "tirada", "titulo": "Tirada larga", "tipo": "tirada", "calentamiento": "Los primeros 15 minutos, en la parte lenta de {E}.", "principal": "60-90 minutos a {E}. Más adelante, los últimos 10-15 minutos a {M}.", "recuperaciones": "—", "vuelta": "Termina andando.", "intensidad": "Z2 · RPE 4 (5 en el tramo final)", "objetivo": "Resistencia aeróbica y resistencia muscular y tendinosa. En el 10K, la tirada sirve de soporte; no es la sesión principal.", "nota": "La duración crece poco a poco; no debe superar el 25-30 % del volumen semanal." },
+      { "id": "umbral", "titulo": "Umbral: intervalos largos", "tipo": "calidad", "calentamiento": "15 minutos a {E} con 3-4 rectas.", "principal": "4-5 × 6 minutos (o 3 × 2 km) a {T}.", "recuperaciones": "60-90 segundos trotando.", "vuelta": "10 minutos a {E}.", "intensidad": "Z4 al final de cada repetición · RPE 6-7, «cómodamente duro» · acabas sintiendo que podrías hacer una más", "objetivo": "Subir la velocidad a la que se estabiliza el lactato. Es lo que más transfiere al 10K en las primeras fases.", "nota": "Si tienes que apretar para mantener el ritmo en la última, ibas demasiado rápido." },
+      { "id": "tempo", "titulo": "Tempo continuo", "tipo": "calidad", "calentamiento": "15 minutos a {E} con 3-4 rectas.", "principal": "20-25 minutos a {T}.", "recuperaciones": "—", "vuelta": "10 minutos a {E}.", "intensidad": "Z4 · RPE 7", "objetivo": "Umbral de lactato y tolerancia a mantener el ritmo, más exigente mentalmente que los intervalos.", "nota": "Se compara bien entre semanas en el mismo recorrido llano." },
+      { "id": "vo2", "titulo": "VO2max", "tipo": "calidad", "calentamiento": "15-20 minutos a {E}, 4 rectas y 2-3 minutos de movilidad dinámica.", "principal": "5-6 × 1000 m o 4-5 × 4 minutos a {I}. Entre 15 y 20 minutos en total a ese ritmo.", "recuperaciones": "2-3 minutos trotando (entre la mitad y el total del tiempo de cada repetición).", "vuelta": "10 minutos a {E}.", "intensidad": "Z5 en las últimas repeticiones · RPE 8 · duro pero controlado", "objetivo": "Subir el techo aeróbico (VO2max) y la velocidad a la que lo alcanzas.", "nota": "Solo una sesión de este tipo por semana y nunca el día después del pádel. Mejor en pista o en llano." },
+      { "id": "especifico", "titulo": "Ritmo específico de 10K", "tipo": "calidad", "calentamiento": "15-20 minutos a {E} y 4 rectas.", "principal": "3 × 3 km o 5 × 2 km a {10K}.", "recuperaciones": "2-3 minutos trotando.", "vuelta": "10 minutos a {E}.", "intensidad": "Z4-Z5 · RPE 7-8", "objetivo": "Economía y confianza al ritmo de carrera y práctica del ritmo constante (pacing).", "nota": "Pertenece a las últimas 4-6 semanas antes de competir." },
+      { "id": "progresivo", "titulo": "Progresivo", "tipo": "rodaje", "calentamiento": "10 minutos a {E}.", "principal": "30-40 minutos bajando el ritmo cada 10 minutos, de {E} hasta {M} y los últimos 5 minutos a {T}.", "recuperaciones": "—", "vuelta": "5-10 minutos a {E}.", "intensidad": "De Z2 a Z4 · RPE de 4 a 7", "objetivo": "Estímulo moderado útil en semanas de transición, con poco coste muscular.", "nota": "No cuenta como rodaje fácil: es media sesión de calidad." },
+      { "id": "cuestas", "titulo": "Cuestas cortas", "tipo": "calidad", "calentamiento": "15 minutos a {E}.", "principal": "8-10 × 10-12 segundos en una cuesta empinada, fuerte y con buena técnica.", "recuperaciones": "Completa: 1,5-2 minutos bajando andando.", "vuelta": "10 minutos a {E}.", "intensidad": "Máxima pero corta: no hay fatiga metabólica", "objetivo": "Potencia y reclutamiento muscular, que son la base de la economía de carrera.", "nota": "Solo con el Aquiles y el gemelo en verde durante al menos 2 semanas: cargan mucho el tendón." }
+    ],
+
+    "fuerza": {
+      "principios": [
+        "2 sesiones por semana. Una de mantenimiento (1/semana) basta en las semanas de afinamiento.",
+        "Días duros duros y días fáciles fáciles: la pierna pesada va el mismo día que la calidad (después) o junto al pádel, nunca en las 24-48 horas previas a una sesión clave.",
+        "Deja 2-3 repeticiones en reserva y no llegues al fallo. Ejecución lenta y controlada.",
+        "Sube la carga cuando completes todas las series con buena técnica y sin aumento de molestias al día siguiente."
+      ],
+      "bloques": [
+        { "titulo": "A · Pierna y tendón", "ejercicios": [
+          ["Elevación de talones de pie con carga (gemelo)", "3-4 × 8-12 · 3 s subir, 3 s bajar"],
+          ["Elevación de talones sentado con carga (sóleo)", "3-4 × 10-15 · el sóleo soporta mucha carga al correr"],
+          ["Sentadilla búlgara o split squat", "3 × 6-10 por pierna · en un rango sin dolor de rodilla"],
+          ["Peso muerto rumano", "3 × 6-8"],
+          ["Hip thrust", "3 × 8-10"],
+          ["Elevación de punteras (tibial anterior)", "2 × 15-20"],
+          ["Plancha Copenhague (aductores)", "2-3 × 20-30 s por lado"]
+        ] },
+        { "titulo": "B · Estabilidad, pie y tren superior", "ejercicios": [
+          ["Step-up alto controlado", "3 × 8 por pierna"],
+          ["Puente de isquios a una pierna", "3 × 8-10 por pierna"],
+          ["Press Pallof", "3 × 10 por lado"],
+          ["Dead bug", "3 × 8 por lado"],
+          ["Remo con cable o mancuerna y face pull", "3 × 10-12 · descarga cervical y postura escapular"],
+          ["Pie corto y toe yoga", "2 × 10 · musculatura intrínseca del pie"],
+          ["Movilidad torácica y cervical suave", "5 minutos · sin forzar rangos dolorosos"]
+        ] }
+      ],
+      "adaptaciones": [
+        ["Aquiles o gemelo en ámbar", "Cambia las elevaciones dinámicas por isometrías: 5 × 30-45 s a esfuerzo alto pero tolerable (≤3/10). Sin saltos ni cuestas. La evidencia del efecto analgésico de la isometría es mixta: si no te alivia, no insistas."],
+        ["Rodilla izquierda molesta", "Cambia la búlgara por sentadilla española o wall sit isométrico (5 × 45 s), limitando el rango a lo que no duele. Evita bajadas largas en los rodajes."],
+        ["Cervical o trapecios cargados", "Prioriza remo, face pull y movilidad. Revisa la tensión de hombros al correr: brazos relajados y manos sueltas."],
+        ["Pliometría (saltos)", "Saltos cortos sobre los tobillos (pogo) o comba, 2-3 × 20 s, solo cuando el Aquiles lleve 2 semanas en verde. Introduce poco a poco."]
+      ]
+    },
+
+    "nutricion": [
+      { "tema": "Antes de una sesión exigente", "texto": "Entre 1 y 4 g de hidratos por kg de peso, 1-4 horas antes (unos 80-160 g 2-3 horas antes). Si comes más cerca, algo pequeño y fácil de digerir.", "evidencia": "Consenso (ACSM, 2016)" },
+      { "tema": "Durante", "texto": "En sesiones de menos de 60-75 minutos no hace falta. En tiradas de más de 75-90 minutos, 30-60 g de hidratos por hora.", "evidencia": "Sólida" },
+      { "tema": "Después", "texto": "Entre 25 y 35 g de proteína más hidratos. Si vuelves a entrenar en menos de 8 horas (doble sesión), 1-1,2 g de hidratos por kg y hora durante las primeras 4 horas.", "evidencia": "Sólida" },
+      { "tema": "Proteína diaria", "texto": "Unos 1,6 g por kg (~130 g al día) en 4 tomas de 30-35 g, una de ellas antes de dormir. Por encima de esa cifra, el beneficio adicional para la masa muscular es pequeño (metaanálisis de Morton, 2018).", "evidencia": "Sólida" },
+      { "tema": "Peso y energía", "texto": "No hagas sesiones clave con un déficit calórico grande. Si quieres bajar peso, hazlo con un déficit moderado y fuera de las fases específicas. La baja disponibilidad energética perjudica el rendimiento, los huesos y los tendones.", "evidencia": "Consenso (RED-S, COI)" },
+      { "tema": "Hidratación", "texto": "En sesiones cortas, bebe según la sed. Si hace calor, pésate antes y después: perder más del 2 % del peso empeora el rendimiento. Repón 1,25-1,5 L por kg perdido, con sodio si sudas mucho.", "evidencia": "Consenso" },
+      { "tema": "Cafeína", "texto": "3 mg por kg (~240 mg) 30-60 minutos antes de la competición o de una sesión clave. Pruébala antes en un entreno y evítala por la tarde si te quita sueño.", "evidencia": "Sólida (ISSN, 2021)" },
+      { "tema": "Creatina", "texto": "3-5 g al día ayudan a ganar fuerza y masa muscular en el gimnasio. En el 10K su beneficio directo es poco probable y puede subir 1-2 kg de agua. Es opcional.", "evidencia": "Sólida para fuerza · hipótesis para 10K" },
+      { "tema": "Hierro", "texto": "No lo suplementes sin analítica. Si notas fatiga sin explicación, pide que te midan la ferritina.", "evidencia": "Consenso" },
+      { "tema": "Sueño", "texto": "Entre 7 y 9 horas. Si duermes mal varias noches seguidas, la sesión de calidad se mueve o se suaviza: no se pierde.", "evidencia": "Consenso" }
+    ]
+  }
+}

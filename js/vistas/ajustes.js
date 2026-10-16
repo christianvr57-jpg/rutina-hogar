@@ -1,5 +1,6 @@
 // Vista AJUSTES: semana A/B, cama baja, copia de seguridad y restablecer.
 import { ajustes, cambiarAjustes, exportar, importar, restablecerTareas, borrarTodo } from '../store.js';
+import { borrarTodo as borrarRunning } from '../running-store.js';
 import { iso, lunesDe, addDays, tipoSemana } from '../schedule.js';
 import { icono } from '../icons.js';
 import { confirmar, mostrarToast, abrirHoja } from '../ui.js';
@@ -43,15 +44,16 @@ export function renderAjustes(el) {
       <button type="button" class="boton-fila" data-a="pegar">${icono('descargar', 22)}Importar desde el portapapeles</button>
     </div>
     <input type="file" id="archivo" accept="application/json,.json" hidden>
-    <p class="pie">Tu progreso y tus cambios viven solo en este iPhone. Guarda una copia de vez en cuando, sobre todo antes de cambiar de móvil o borrar los datos de Safari.</p>
+    <p class="pie">Tu progreso, tus cambios y tus datos de running viven solo en este iPhone. Guarda una copia de vez en cuando, sobre todo antes de cambiar de móvil o borrar los datos de Safari.</p>
 
     <div class="tit-lista">Restablecer</div>
     <div class="lista">
       <button type="button" class="boton-fila" data-a="rutina">${icono('reiniciar', 22)}Restablecer tareas a la rutina original</button>
+      <button type="button" class="boton-fila peligro" data-a="running">${icono('papelera', 22)}Borrar datos de running</button>
       <button type="button" class="boton-fila peligro" data-a="todo">${icono('papelera', 22)}Borrar progreso y ajustes</button>
     </div>
 
-    <div class="version">Rutina del hogar · versión 1.0<br>Los datos se guardan en este dispositivo. Sin cuentas, sin servidor.</div>`;
+    <div class="version">Rutina del hogar · versión 1.1<br>Los datos se guardan en este dispositivo. Sin cuentas, sin servidor.</div>`;
 }
 
 async function exportarCopia() {
@@ -151,6 +153,11 @@ export function eventosAjustes(el) {
         restablecerTareas();
         renderAjustes(el);
         mostrarToast('Tareas restablecidas');
+      }
+    } else if (a === 'running') {
+      if (await confirmar({ titulo: '¿Borrar los datos de running?', texto: 'Se borran tus respuestas de la auditoría, el registro de sesiones y tus zonas. El plan del entrenador se mantiene.', ok: 'Borrar', peligro: true })) {
+        borrarRunning();
+        mostrarToast('Datos de running borrados');
       }
     } else if (a === 'todo') {
       if (await confirmar({ titulo: '¿Borrar todo?', texto: 'Se borran el progreso, los ajustes y tus cambios en las tareas. No se puede deshacer.', ok: 'Borrar todo', peligro: true })) {

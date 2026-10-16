@@ -1,7 +1,7 @@
 // Service worker: la app funciona sin conexión.
 // Estrategia: se precarga todo al instalar y después se sirve desde la caché
 // mientras se actualiza en segundo plano (la nueva versión llega en la siguiente apertura).
-const VERSION = 'v1';
+const VERSION = 'v2';
 const CACHE = `rutina-hogar-${VERSION}`;
 const ARCHIVOS = [
   './',
@@ -12,13 +12,17 @@ const ARCHIVOS = [
   'js/store.js',
   'js/schedule.js',
   'js/planner.js',
+  'js/running-calc.js',
+  'js/running-store.js',
   'js/ui.js',
   'js/icons.js',
   'js/vistas/hoy.js',
   'js/vistas/semana.js',
   'js/vistas/tareas.js',
   'js/vistas/ajustes.js',
+  'js/vistas/running.js',
   'data/rutina.json',
+  'data/running.json',
   'icons/apple-touch-icon.png',
   'icons/icon-192.png',
   'icons/icon-512.png',
