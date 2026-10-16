@@ -84,7 +84,7 @@ function htmlDetalleSesion(s, ritmo) {
     ['Intensidad', [s.zona, s.rpe ? `RPE ${s.rpe}` : ''].filter(Boolean).join(' · ') || s.intensidad],
     ['Objetivo', s.objetivo],
     ['Notas', s.notas || s.nota],
-  ].filter(([, v]) => v);
+  ].filter(([, v]) => v && v !== '—');
   return `<dl class="r-dl">${filas.map(([k, v]) => `<div class="dato"><dt>${k}</dt><dd>${conRitmos(v, ritmo)}</dd></div>`).join('')}</dl>`;
 }
 
@@ -129,13 +129,31 @@ function htmlSemana(sem, ritmo, idx, total) {
     ${sem.porque ? `<div class="tit-lista">Por qué esta semana</div><div class="lista r-texto"><p>${esc(sem.porque)}</p></div>` : ''}`;
 }
 
+const htmlPasos = (c) => `<ol class="r-pasos">${(c.hojaDeRuta || []).map((p, i) => `<li class="${p.estado}"><span class="r-num">${p.estado === 'hecho' ? '✓' : i + 1}</span><div><b>${esc(p.paso)}</b><small>${esc(p.texto)}</small></div></li>`).join('')}</ol>`;
+const htmlHallazgos = (d) => `<div class="r-hallazgos">${(d.hallazgos || []).map((h) => `<div class="r-hallazgo nivel-${h.nivel}"><b>${esc(h.titulo)}</b><p>${esc(h.texto)}</p></div>`).join('')}</div>`;
+const htmlFases = (c) => `<div class="r-fases">${(c.fases || []).map((f) => `<div class="campo col"><div class="et"><b>${esc(f.nombre)}</b> · ${esc(f.duracion)}<small>${esc(f.objetivo)}</small></div></div>`).join('')}</div>`;
+
+function htmlObjetivos(o) {
+  return `<dl class="r-dl">${o.lista.map(([k, v]) => `<div class="dato"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>
+    <p class="ayuda">${esc(o.nota)}</p>
+    <h4 class="r-h4">Prioridades</h4><ul class="r-puntos">${o.prioridades.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+    <h4 class="r-h4">Cómo evaluamos</h4><ul class="r-puntos">${o.evaluacion.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>`;
+}
+
 function htmlPlan(c, ritmo) {
   const semanas = (c.plan && c.plan.semanas) || [];
+  const d = c.diagnostico || {};
   if (semanas.length) {
     if (semanaIdx == null || semanaIdx >= semanas.length) semanaIdx = semanaActualIdx(semanas);
-    return htmlSemana(semanas[semanaIdx], ritmo, semanaIdx, semanas.length);
+    const conclusion = d.conclusion ? `<div class="r-tarjeta r-interior"><p>${esc(d.conclusion)}</p></div>` : '';
+    return `${htmlSemana(semanas[semanaIdx], ritmo, semanaIdx, semanas.length)}
+      <div class="tit-lista">Visión general</div>
+      <div class="tarjeta">
+        ${c.objetivos ? desplegable('p-objetivos', '<span class="r-pcab"><b>Objetivos y prioridades</b><small>Realista, ambicioso e intermedios</small></span>', htmlObjetivos(c.objetivos)) : ''}
+        ${desplegable('p-diagnostico', '<span class="r-pcab"><b>Diagnóstico inicial</b><small>Lo que dicen tus datos</small></span>', `${conclusion}${htmlHallazgos(d)}${d.fuente ? `<p class="ayuda">${esc(d.fuente)}</p>` : ''}`)}
+        ${desplegable('p-ruta', '<span class="r-pcab"><b>Hoja de ruta y fases</b><small>Dónde estamos</small></span>', `${htmlPasos(c)}<h4 class="r-h4">Periodización</h4>${htmlFases(c)}`)}
+      </div>`;
   }
-  const d = c.diagnostico || {};
   const respondidas = contarRespuestas(c);
   return `
     <div class="r-tarjeta acento">
@@ -146,17 +164,15 @@ function htmlPlan(c, ritmo) {
     </div>
 
     <div class="tit-lista">Hoja de ruta</div>
-    <ol class="lista r-pasos">${(c.hojaDeRuta || []).map((p, i) => `<li class="${p.estado}"><span class="r-num">${i + 1}</span><div><b>${esc(p.paso)}</b><small>${esc(p.texto)}</small></div></li>`).join('')}</ol>
+    <div class="lista">${htmlPasos(c)}</div>
 
     <div class="tit-lista">Lo que ya veo en tus datos</div>
-    <div class="lista r-hallazgos">
-      ${(d.hallazgos || []).map((h) => `<div class="r-hallazgo nivel-${h.nivel}"><b>${esc(h.titulo)}</b><p>${esc(h.texto)}</p></div>`).join('')}
-    </div>
+    <div class="lista">${htmlHallazgos(d)}</div>
     ${d.conclusion ? `<div class="r-tarjeta"><div class="r-sobre">Conclusión provisional</div><p>${esc(d.conclusion)}</p></div>` : ''}
     ${d.fuente ? `<p class="pie">${esc(d.fuente)}</p>` : ''}
 
     <div class="tit-lista">Periodización prevista</div>
-    <div class="lista r-fases">${(c.fases || []).map((f) => `<div class="campo col"><div class="et"><b>${esc(f.nombre)}</b> · ${esc(f.duracion)}<small>${esc(f.objetivo)}</small></div></div>`).join('')}</div>
+    <div class="lista">${htmlFases(c)}</div>
     <p class="pie">Las fases no son rígidas: su duración depende de tu respuesta al entrenamiento y del calendario de carreras.</p>`;
 }
 

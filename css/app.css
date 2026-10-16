@@ -356,6 +356,11 @@ main.vista {
 .r-hallazgo b { font-size: 15.5px; }
 .r-hallazgo p { margin-top: 2px; color: var(--label-2); }
 .r-fases .et b { font-weight: 600; }
+.r-plegable-int .r-pasos li, .r-plegable-int .r-fases .campo { padding-left: 0; padding-right: 0; }
+.r-plegable-int .r-hallazgo { padding-right: 0; }
+.r-plegable-int .r-hallazgo::before { left: 0; }
+.r-plegable-int .r-hallazgo { padding-left: 16px; }
+.r-tarjeta.r-interior { margin: 0 0 6px; padding: 12px 14px; box-shadow: none; background: var(--fill); }
 .r-fases .et { font-size: 15.5px; color: var(--label) !important; }
 
 .r-semana-nav { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
@@ -364,7 +369,7 @@ main.vista {
 .r-semana-tit b { display: block; font-size: 17px; }
 .r-semana-tit span { font-size: 13.5px; color: var(--label-2); }
 .r-sesion { --c: var(--c-casa); }
-.r-sesion.tipo-calidad, .r-tipo.tipo-calidad, .r-tipo.tipo-competicion { --c: var(--peligro); }
+.r-sesion.tipo-calidad, .r-sesion.tipo-competicion, .r-tipo.tipo-calidad, .r-tipo.tipo-competicion { --c: var(--peligro); }
 .r-sesion.tipo-rodaje, .r-tipo.tipo-rodaje { --c: var(--c-suelos); }
 .r-sesion.tipo-tirada, .r-tipo.tipo-tirada { --c: var(--c-bano); }
 .r-sesion.tipo-fuerza, .r-tipo.tipo-gimnasio { --c: var(--c-ropa); }
