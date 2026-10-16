@@ -3,6 +3,7 @@
 // (ediciones, tareas nuevas, tareas eliminadas), el progreso y los ajustes.
 
 import { iso, lunesDe, addDays } from './schedule.js';
+import * as running from './running-store.js';
 
 const CLAVE = 'rutina-hogar:v1';
 const listeners = new Set();
@@ -123,7 +124,7 @@ export function desmarcar(clave, avisar = false) {
 
 // --- Copia de seguridad y restablecer --------------------------------------------------------------
 export function exportar() {
-  return JSON.stringify({ app: 'rutina-hogar', exportado: new Date().toISOString(), datos: estado }, null, 2);
+  return JSON.stringify({ app: 'rutina-hogar', exportado: new Date().toISOString(), datos: estado, running: running.exportar() }, null, 2);
 }
 
 export function importar(texto) {
@@ -132,6 +133,7 @@ export function importar(texto) {
   estado = normalizar(obj.datos);
   podar(estado);
   guardar();
+  if (obj.running) running.importar(obj.running);
 }
 
 export function restablecerTareas() {

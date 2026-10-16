@@ -7,11 +7,14 @@ import { renderHoy, eventosHoy, diaActual } from './vistas/hoy.js';
 import { renderSemana, eventosSemana, reiniciarSemana } from './vistas/semana.js';
 import { renderTareas, eventosTareas } from './vistas/tareas.js';
 import { renderAjustes, eventosAjustes } from './vistas/ajustes.js';
+import { renderRunning, eventosRunning } from './vistas/running.js';
+import * as running from './running-store.js';
 
 const PESTANAS = [
   ['hoy', 'Hoy', renderHoy],
   ['semana', 'Semana', renderSemana],
   ['tareas', 'Tareas', renderTareas],
+  ['running', 'Running', renderRunning],
   ['ajustes', 'Ajustes', renderAjustes],
 ];
 const scrolls = {};
@@ -53,12 +56,23 @@ function construirShell() {
   eventosSemana(vista);
   eventosTareas(vista);
   eventosAjustes(vista);
+  eventosRunning(vista);
 }
 
 async function cargarRutina() {
   const r = await fetch('data/rutina.json', { cache: 'no-cache' });
   if (!r.ok) throw new Error('No se pudo cargar la rutina');
   return r.json();
+}
+
+// El plan de running es opcional: si falla, el resto de la app funciona igual.
+async function cargarRunning() {
+  try {
+    const r = await fetch('data/running.json', { cache: 'no-cache' });
+    return r.ok ? await r.json() : null;
+  } catch (e) {
+    return null;
+  }
 }
 
 // Si la app queda abierta y cambia el día, vuelve a pintar Hoy.
@@ -85,8 +99,9 @@ function registrarServiceWorker() {
 
 async function iniciar() {
   try {
-    const rutina = await cargarRutina();
+    const [rutina, plan] = await Promise.all([cargarRutina(), cargarRunning()]);
     await store.iniciar(rutina);
+    running.iniciar(plan);
     construirShell();
     mostrar('hoy');
     vigilarCambioDeDia();
